@@ -7,7 +7,7 @@ function App() {
       {/* Navbar */}
       <Navbar />
       {/* Filters */}
-      <Filters />
+      
       {/* Rentals */}
       
       {/* Footer */}
