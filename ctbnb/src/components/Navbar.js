@@ -6,7 +6,7 @@ import { IoSearchCircle } from "react-icons/io5";
 
 const Navbar = () => {
   return (
-    <div className="border-b">
+    <div className="border-b sticky top-0 z-50 bg-white/[95%]">
     <div className="flex justify-between items-center sm:mx-6 md:mx-10 bg-white-200">
         {/* Left */}
         <div className="h-20 flex">

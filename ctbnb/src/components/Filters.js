@@ -1,4 +1,5 @@
 import React from 'react'
+import Filter from './Filter';
 import { FaFire } from "react-icons/fa";
 import { FaTree } from "react-icons/fa";
 import { FaWater } from "react-icons/fa";
@@ -13,10 +14,10 @@ const Filters = () => {
         {title: "Key Houses", icon: <FaKey/> },
         {title: "Unique", icon: <RiAliensFill/> },
     ];
-  return <div className="sm:mx-6 md:mx-10 lg:mx-12">
-    <div className="">
+  return <div className="">
+    <div className="flex justify-start sm:gap-4 gap-3 mt-4 pl-3">
         {sorting.map((obj) => (
-            <Filters />
+            <Filter title={obj.title} icon={obj.icon} />
         ))}
     </div>
   </div>
