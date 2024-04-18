@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
+const Rental = require('./models/Rental');
 
 const app = express();
 
@@ -18,6 +19,16 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 app.get('/', (req, res) => {
   res.send('Hello from the backend!');
 });
+
+// Get all rentals
+app.get('/rentals', async (req, res) => {
+    try {
+      const rentals = await Rental.find({});
+      res.json(rentals);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
 
 // Listen on a port
 const PORT = process.env.PORT || 5000;
