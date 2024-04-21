@@ -1,4 +1,5 @@
-// import React from 'react';  
+// import React, { useEffect } from 'react';  
+// import axios from 'axios'
 // import Rental from './Rental';
 // import house1 from '../assets/house1.png';
 // import house2 from '../assets/house2.png';
@@ -10,6 +11,7 @@
 // import house8 from '../assets/house8.png';
 // import house9 from '../assets/house9.png';
 // import house10 from '../assets/house10.png';
+
 
 // const Rentals = () => {
 //     const rentals = [
@@ -39,37 +41,41 @@
 //   )
 // }
 
+
 // export default Rentals
 
+
 import React, { useEffect, useState } from 'react';
-import Rental from './Rental';
 import axios from 'axios';
-
+import Rental from './Rental';
+  
 const Rentals = () => {
-  const [rentals, setRentals] = useState([]);
+    const [rentals, setRentals] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/rentals')
-      .then(response => {
-        setRentals(response.data);
-      })
-      .catch(error => console.error('Error fetching data: ', error));
-  }, []);
+    useEffect(() => {
+        axios.get('http://localhost:3001/getRentals')
+            .then(response => {
+                setRentals(response.data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
 
-  return (
-    <div className="py-3 sm:py-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {rentals.map((rental) => (
-            <Rental
-                key={rental._id}
-                title={rental.title}
-                image={require(`../assets/${rental.image}`)}
-                price={rental.price}
-            />
-            ))}
+    return (
+        <div className="py-3 sm:py-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {rentals.map((rental) => (
+                    <Rental 
+                        key={rental._id}  // Assuming '_id' is provided by MongoDB
+                        title={rental.title} 
+                        image={rental.image || ''} // Assuming you have an image field or default it
+                        price={rental.price}
+                    />
+                ))}
+            </div>
         </div>
-    </div>
-  );
-}
+    );
+};
 
 export default Rentals;
+
+
