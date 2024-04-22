@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaStar } from "react-icons/fa";
 
-const Rental = ({ title, image, price}) => {
+const Rental = ({ title, image, price, decription, rating, availability}) => {
   return (
     <div className="">
     <div className="relative">
@@ -26,10 +26,10 @@ const Rental = ({ title, image, price}) => {
         {/*Left*/}
         <div className="">
         <p className="max-w-[17rem] font-semibold">
-        Fun place to stay have a blast!
+        {decription}
         </p>
         <p className="max-w-[17rem] text-[16px] -mt-1">
-            Mar 28 - April 29
+          {availability}
         </p>
         <p className="max-w-[17rem] font-semibold text-[17px]">
             ${price}
@@ -38,7 +38,9 @@ const Rental = ({ title, image, price}) => {
       {/*Right*/}
       <div className="flex items-center space-x-1">
         <FaStar />
-        <p className="text-[15px]">5.0</p>
+        <p className="text-[15px]">
+        {rating}
+          </p>
       </div>
     </div>
     </div>
